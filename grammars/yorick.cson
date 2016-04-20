@@ -1,0 +1,74 @@
+'scopeName': 'source.yorick'
+'name': 'Yorick'
+'fileTypes': ['i']
+'patterns': [
+    { # Numeric match
+       'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))\\b'
+       'name': 'constant.numeric.yorick'  # First rule
+    },
+    { # Numeric match
+       'match': '\\b(avg|rms)\\b'
+       'name': 'constant.builtin.yorick'  # First rule
+    },
+    { # func + funcname match
+      'match': '\\b(func)\\s+(\\w+)\\s*\\(.*\\)'
+      'captures':
+        '1':
+            'name': 'keyword.control.yorick'
+        '2':
+            'name': 'entity.name.function.yorick'
+      'name': 'meta.function.yorick'
+    },
+    { # single quote '' rule
+      'begin': '\''
+      'end': '\''
+      'name': 'string.quoted.single.yorick'
+    },
+    { # double quote ""  rule
+    'begin': '\"'
+    'end': '\"'
+    'name': 'string.quoted.single.yorick'
+    },
+    { # /* */ comments rule
+        'begin': '/\\*'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.begin.yorick'
+        'end': '\\*/'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.end.yorick'
+        'name': 'comment.block.yorick'
+      },
+      { # modifiers rule
+        'match': '\\b(extern|local|if|else|while|write|swrite|read|sread)\\b'
+        'name': 'storage.modifier.yorick'
+      },
+      { #
+            'begin': '//'
+            'beginCaptures':
+              '0':
+                'name': 'punctuation.definition.comment.yorick'
+            'end': '\\n'
+            'name': 'comment.line.double-slash.yorick'
+            'patterns': [
+              {
+                'include': '#line_continuation_character'
+              }
+            ]
+          },
+          { # #include, include require
+           'match': '\\b(?:(#include)|(include)|(require))\\b'
+           'name': 'keyword.control.include.yorick'
+         },
+         {
+           'match': '\\b(?:(exit)|(quit)|(error))\\b'
+           'name': 'support.variable.yorick'
+         },
+         {
+           'match': '\\b(?:(str)|(int)|(float)|(double))\\b'
+           'name': 'support.function.builtin.yorick'
+         }
+
+
+]

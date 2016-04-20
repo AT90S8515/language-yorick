@@ -1,0 +1,17 @@
+{
+  "name": "language-yorick",
+  "version": "0.0.0",
+  "description": "Yorick language support in Atom",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabricevidal/language-yorick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fabricevidal/language-yorick/issues"
+  },
+  "license": "MIT"
+}
