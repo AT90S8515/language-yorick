@@ -2,15 +2,15 @@
 'name': 'Yorick'
 'fileTypes': ['i']
 'patterns': [
-    { # Numeric match
+    { # Numeric match ORANGE
        'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))\\b'
        'name': 'constant.numeric.yorick'  # First rule
     },
-    { # Numeric match
-       'match': '\\b(avg|rms)\\b'
-       'name': 'constant.builtin.yorick'  # First rule
+    { # Numeric match RED
+       'match': '\\b(avg|rms|min|max|sum|ptp|mnx|mxx|cum|dif|zcen|pcen|uncp|random)\\b'
+       'name': 'variable.language.yorick'  # First rule
     },
-    { # func + funcname match
+    { # func + funcname match VIOLET BLUE
       'match': '\\b(func)\\s+(\\w+)\\s*\\(.*\\)'
       'captures':
         '1':
@@ -19,7 +19,7 @@
             'name': 'entity.name.function.yorick'
       'name': 'meta.function.yorick'
     },
-    { # single quote '' rule
+    { # single quote '' rule GREEN
       'begin': '\''
       'end': '\''
       'name': 'string.quoted.single.yorick'
@@ -29,19 +29,19 @@
     'end': '\"'
     'name': 'string.quoted.single.yorick'
     },
-    { # /* */ comments rule
+    { # /* */ comments rule GREEN
         'begin': '/\\*'
         'beginCaptures':
           '0':
-            'name': 'punctuation.definition.comment.begin.yorick'
+            'name': 'string.triple.comment.begin.yorick'
         'end': '\\*/'
         'endCaptures':
           '0':
-            'name': 'punctuation.definition.comment.end.yorick'
-        'name': 'comment.block.yorick'
+            'name': 'string.triple.comment.end.yorick'
+        'name': 'string.triple.comment.yorick'
       },
-      { # modifiers rule
-        'match': '\\b(extern|local|if|else|while|write|swrite|read|sread)\\b'
+      { # modifiers rule VIOLET
+        'match': '\\b(pause|roll|palette|plg|plmesh|fma|limits| range| logxy| window|winkill| animate| plm|plc|plf| plv| pli| pldj| plt|allof|anyof|noneof|nallof|where|where2|transpose|interp|integ|print|info|dimsof|orgsof|numberof|typeof|structof|is_array|is_func|is_void|is_range|is_stream|am_subroutine|array|span|span1|grow|median|sort|extern|local|if|else|while|do|write|swrite|read|sread|return|continue)\\b'
         'name': 'storage.modifier.yorick'
       },
       { #
@@ -57,16 +57,16 @@
               }
             ]
           },
-          { # #include, include require
-           'match': '\\b(?:(#include)|(include)|(require))\\b'
+          { # #include,  require VIOLET
+           'match': '\\b(?:(#include)|(include)|(require)|(struct))\\b'
            'name': 'keyword.control.include.yorick'
          },
-         {
-           'match': '\\b(?:(exit)|(quit)|(error))\\b'
+         { # RED
+           'match': '\\b(?:(exit)|(quit)|(error)|(system)|(break))\\b'
            'name': 'support.variable.yorick'
          },
          {
-           'match': '\\b(?:(str)|(int)|(float)|(double))\\b'
+           'match': '\\b(?:(str)|(int)|(float)|(double)|(char)|(short)|(complex)|(long)|sin|cos|tan|asin|acos|atan|exp|log|log10|asinh|acosh|atanh|sinh|cosh|tanh|sech|csch|abs|sign|floor|ceil|conj)\\b'
            'name': 'support.function.builtin.yorick'
          }
 
